@@ -5,8 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ui.activity.MainActivity">
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+<com.facebook.drawee.view.SimpleDraweeView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingConstraints"
+
+    />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
