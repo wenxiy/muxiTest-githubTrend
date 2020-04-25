@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
@@ -24,6 +25,7 @@ public class RetrofitHelper {
     }
     public RetrofitHelper(Context mContext) {
         mCntext=mContext;
+        init();
     }
     private void init()
     {
@@ -35,8 +37,11 @@ public class RetrofitHelper {
                 .baseUrl("https://ghapi.huchen.dev")
                 .client(client)
                 .addConverterFactory(factory)
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
+    }
+    public RetrofitService getServer(){
+        return mRetrofit.create(RetrofitService.class);
     }
 
 }
