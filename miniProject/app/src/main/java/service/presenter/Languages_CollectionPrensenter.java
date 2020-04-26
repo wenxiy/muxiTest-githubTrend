@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.internal.subscriptions.ArrayCompositeSubscription;
 import service.entity.Languages_Collection;
 import service.manager.DataManager;
@@ -14,7 +15,7 @@ public class Languages_CollectionPrensenter implements Presenter{
     private Context context;
     private DataView dataView;
     private Languages_Collection languages_collection;
-    private ArrayCompositeSubscription compositeSubscription;
+    private CompositeDisposable compositeDisposable;
     public Languages_CollectionPrensenter(Context context)
     {
         this.context=context;
@@ -22,7 +23,8 @@ public class Languages_CollectionPrensenter implements Presenter{
 
     @Override
     public void onCreate() {
-
+        dataManager=new DataManager(context);
+        compositeDisposable=new CompositeDisposable();
     }
 
     @Override
@@ -32,7 +34,10 @@ public class Languages_CollectionPrensenter implements Presenter{
 
     @Override
     public void onStop() {
-
+        if(compositeDisposable==null)
+        {
+            compositeDisposable.clear();
+        }
     }
 
     @Override
@@ -42,11 +47,16 @@ public class Languages_CollectionPrensenter implements Presenter{
 
     @Override
     public void attachView(View view) {
-
+        dataView=(DataView)dataView;
     }
 
     @Override
     public void attachIncomingIntent(Intent intent) {
 
+
+    }
+    public void Languages_Collection_Retrofit()
+    {
+        //compositeDisposable.add();
     }
 }

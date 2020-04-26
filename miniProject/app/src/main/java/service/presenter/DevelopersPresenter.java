@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.internal.subscriptions.ArrayCompositeSubscription;
 import service.entity.Developers;
 import service.manager.DataManager;
@@ -14,7 +15,7 @@ public class DevelopersPresenter implements Presenter{
     private Context context;
     private DataView dataView;
     private Developers developers;
-    private ArrayCompositeSubscription compositeSubscription;
+    private CompositeDisposable compositeDisposable;
     public DevelopersPresenter(Context context){
         this.context=context;
     }
