@@ -8,7 +8,7 @@
     tools:context="ui.activity.MainActivity">
 
     <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/simpleDraweeView"
+        android:id="@+id/aver"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="30dp"
