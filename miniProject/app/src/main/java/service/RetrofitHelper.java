@@ -39,6 +39,7 @@ public class RetrofitHelper {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
+    //
     public RetrofitService getServer(){
         return mRetrofit.create(RetrofitService.class);
     }
