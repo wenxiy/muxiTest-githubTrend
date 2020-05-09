@@ -51,9 +51,11 @@ public class RecyclerViewAdpter extends RecyclerView.Adapter<RecyclerViewAdpter.
         }
         public void setdata(Developers developers)
         {
-            simpleDraweeView.setImageURI(developers.getAvatar());
-            item_1.setText(developers.getUsername());
-            item_2.setText(developers.getName());
+        //    simpleDraweeView.setImageURI(developers.getAvatar());
+         //   item_1.setText(developers.getUsername());
+         //   item_2.setText(developers.getName());
+            item_1.setText("ABC");
+            item_2.setText("bcd");
         }
     }
 }

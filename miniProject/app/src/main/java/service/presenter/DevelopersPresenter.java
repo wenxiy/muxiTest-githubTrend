@@ -2,7 +2,9 @@ package service.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.MainThread;
 
@@ -74,22 +76,22 @@ public class DevelopersPresenter implements Presenter{
                 .subscribe(new Observer<Developers>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-
+                        Log.d("TAG","订阅");
                     }
 
                     @Override
                     public void onNext(Developers developers) {
-
+                        Log.d("TAG","++");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Toast.makeText(context,"拉去请求失败",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onComplete() {
-
+                        Toast.makeText(context,"拉去请求完成",Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -1,22 +1,28 @@
 package ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.miniproject.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import service.entity.Developers;
 import service.entity.Languages_Collection;
 import service.entity.Repositories;
 import service.entity.Spoken_Languages_Collection;
+import ui.adpter.RecyclerViewAdpter;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mrecyclerview;
+    private ArrayList<Developers> mdatas;
+    private RecyclerViewAdpter madpter;
     private ArrayList<Developers> developers;
     private ArrayList<Languages_Collection> languages_collections;
     private ArrayList<Repositories> repositories;
@@ -34,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         textView_1=(TextView)findViewById(R.id.item_t1);
         textView_2=(TextView)findViewById(R.id.item_t2);
         mrecyclerview=(RecyclerView) findViewById(R.id.recyclerview_1);
+        mrecyclerview.setAdapter(madpter);
+
 
     }
 }
