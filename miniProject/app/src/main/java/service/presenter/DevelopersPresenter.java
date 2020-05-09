@@ -12,6 +12,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.internal.subscriptions.ArrayCompositeSubscription;
+import io.reactivex.schedulers.Schedulers;
+import service.RetrofitHelper;
+import service.RetrofitService;
 import service.entity.Developers;
 import service.manager.DataManager;
 import service.view.DataView;
@@ -58,11 +61,15 @@ public class DevelopersPresenter implements Presenter{
 
     @Override
     public void attachIncomingIntent(Intent intent) {
+        //添加网络请求，线程切换
+        getDevelopers();
     }
 
     public void getDevelopers() {
-      /*  compositeDisposable.add(dataManager.getDevelopers().
-                subscribeOn()
+        RetrofitHelper.getInstance(context)
+                .getServer()
+                .getDevelopers()
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Developers>() {
                     @Override
@@ -84,10 +91,6 @@ public class DevelopersPresenter implements Presenter{
                     public void onComplete() {
 
                     }
-                })
-                )
-
-        ;
-*/
+                });
     }
 }
