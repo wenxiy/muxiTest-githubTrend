@@ -1,4 +1,4 @@
-package service.view;
+package ui.view;
 
 public class DataView implements View {
    public void success()

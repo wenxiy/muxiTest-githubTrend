@@ -1,4 +1,4 @@
-package service.view;
+package ui.view;
 
 public interface View {
 
