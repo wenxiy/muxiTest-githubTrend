@@ -6,25 +6,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.MainThread;
-
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.internal.subscriptions.ArrayCompositeSubscription;
 import io.reactivex.schedulers.Schedulers;
 import service.RetrofitHelper;
-import service.RetrofitService;
 import service.entity.Developers;
 import service.manager.DataManager;
-import ui.view.DataView;
+import ui.view.DevelopersView;
 
 public class DevelopersPresenter implements Presenter{
     private DataManager dataManager;
     private Context context;
-    private DataView dataView;
+    private DevelopersView dataView;
     private Developers mdevelopers;
     private CompositeDisposable compositeDisposable;
     public DevelopersPresenter(Context context){
@@ -59,7 +54,7 @@ public class DevelopersPresenter implements Presenter{
     @Override
     public void attachView(View view) {
         //这里写和view的联系
-
+        dataView=(DevelopersView)view;
     }
 
     @Override
@@ -79,6 +74,7 @@ public class DevelopersPresenter implements Presenter{
                     public void onSubscribe(Disposable d) {
                         if (mdevelopers!=null)
                         {
+
                             //这里去写和view的联系，把数据传过去
                         }
                         Log.d("TAG","订阅");
