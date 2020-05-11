@@ -8,7 +8,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.internal.subscriptions.ArrayCompositeSubscription;
 import service.entity.Languages_Collection;
 import service.manager.DataManager;
-import service.view.DataView;
+import ui.view.DataView;
 
 public class Languages_CollectionPrensenter implements Presenter{
     private DataManager dataManager;

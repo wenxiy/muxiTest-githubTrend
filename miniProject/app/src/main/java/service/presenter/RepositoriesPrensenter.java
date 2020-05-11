@@ -7,7 +7,7 @@ import android.view.View;
 import io.reactivex.internal.subscriptions.ArrayCompositeSubscription;
 import service.entity.Repositories;
 import service.manager.DataManager;
-import service.view.DataView;
+import ui.view.DataView;
 
 public class RepositoriesPrensenter implements Presenter{
     private DataManager dataManager;

@@ -7,7 +7,7 @@ import android.view.View;
 import io.reactivex.internal.subscriptions.ArrayCompositeSubscription;
 import service.entity.Spoken_Languages_Collection;
 import service.manager.DataManager;
-import service.view.DataView;
+import ui.view.DataView;
 
 public class Spoken_Languages_CollectionPresenter implements Presenter{
     private DataManager dataManager;

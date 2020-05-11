@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         textView_2=(TextView)findViewById(R.id.item_t2);
         mrecyclerview=(RecyclerView) findViewById(R.id.recyclerview_1);
         mrecyclerview.setAdapter(madpter);
+        for(int i=0;i<=5;i++)
+        {
+        }
 
 
 

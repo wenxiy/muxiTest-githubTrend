@@ -19,13 +19,13 @@ import service.RetrofitHelper;
 import service.RetrofitService;
 import service.entity.Developers;
 import service.manager.DataManager;
-import service.view.DataView;
+import ui.view.DataView;
 
 public class DevelopersPresenter implements Presenter{
     private DataManager dataManager;
     private Context context;
     private DataView dataView;
-    private Developers developers;
+    private Developers mdevelopers;
     private CompositeDisposable compositeDisposable;
     public DevelopersPresenter(Context context){
         this.context=context;
@@ -58,7 +58,8 @@ public class DevelopersPresenter implements Presenter{
 
     @Override
     public void attachView(View view) {
-       // dataView=(DataView)view;
+        //这里写和view的联系
+
     }
 
     @Override
@@ -76,22 +77,29 @@ public class DevelopersPresenter implements Presenter{
                 .subscribe(new Observer<Developers>() {
                     @Override
                     public void onSubscribe(Disposable d) {
+                        if (mdevelopers!=null)
+                        {
+                            //这里去写和view的联系，把数据传过去
+                        }
                         Log.d("TAG","订阅");
                     }
 
+
                     @Override
                     public void onNext(Developers developers) {
-                        Log.d("TAG","++");
+                        mdevelopers=developers;
+                        Log.d("TAG","请求数据");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(context,"拉去请求失败",Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                        Toast.makeText(context,"拉取请求失败",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onComplete() {
-                        Toast.makeText(context,"拉去请求完成",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context,"拉取请求完成",Toast.LENGTH_SHORT).show();
                     }
                 });
     }
