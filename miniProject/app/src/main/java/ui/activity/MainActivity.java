@@ -2,6 +2,7 @@ package ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mrecyclerview;
     private ArrayList<Developers> mdatas;
     private RecyclerViewAdpter madpter;
+    private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Developers> developers;
     private ArrayList<Languages_Collection> languages_collections;
     private ArrayList<Repositories> repositories;
@@ -33,19 +35,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
+        initdata();
+        initView();
     }
-    public void init()
-    {
+
+    private void initView() {
         textView_1=(TextView)findViewById(R.id.item_t1);
         textView_2=(TextView)findViewById(R.id.item_t2);
-        mrecyclerview=(RecyclerView) findViewById(R.id.recyclerview_1);
+        mrecyclerview=(RecyclerView)findViewById(R.id.recyclerview_1);
         mrecyclerview.setAdapter(madpter);
-        for(int i=0;i<=5;i++)
-        {
-        }
 
+    }
 
+    public void initdata()
+    {
+        layoutManager=new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
+        madpter=new RecyclerViewAdpter(getData());
+    }
 
+    private Context getData() {
+        return this;
     }
 }
