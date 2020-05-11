@@ -10,7 +10,7 @@ import service.manager.DataManager;
 import ui.view.DataView;
 
 public class Spoken_Languages_CollectionPresenter implements Presenter{
-    private DataManager dataManager;
+    private DataManager dataManager;//管理数据
     private Context context;
     private DataView dataView;
     private Spoken_Languages_Collection spoken_languages_collection;
