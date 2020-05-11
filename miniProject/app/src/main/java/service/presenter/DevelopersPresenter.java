@@ -74,7 +74,7 @@ public class DevelopersPresenter implements Presenter{
                     public void onSubscribe(Disposable d) {
                         if (mdevelopers!=null)
                         {
-
+                            dataView.success(mdevelopers);
                             //这里去写和view的联系，把数据传过去
                         }
                         Log.d("TAG","订阅");
