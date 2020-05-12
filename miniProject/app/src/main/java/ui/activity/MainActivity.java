@@ -26,9 +26,8 @@ import ui.view.DevelopersView;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mrecyclerview;
-    private RecyclerViewAdpter madpter;
-    private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Developers> developers;
+   // private RecyclerViewAdpter madpter=new RecyclerViewAdpter(List<developers>);
     private DevelopersPresenter mdeveloperspresenter=new DevelopersPresenter(this);
     private ArrayList<Languages_Collection> mlanguages_collections;
     private ArrayList<Repositories> mrepositories;
@@ -36,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView_1;
     private TextView textView_2;
     private SimpleDraweeView simpleDraweeView;
+
+    public MainActivity() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,22 +47,21 @@ public class MainActivity extends AppCompatActivity {
         initView();
     }
 
-    private void initView() {//拉取Developer的请求
+    private void initView() {//将数据放到ui上
         textView_1=(TextView)findViewById(R.id.item_t1);
         textView_2=(TextView)findViewById(R.id.item_t2);
         simpleDraweeView=findViewById(R.id.aver);
         mrecyclerview=(RecyclerView)findViewById(R.id.recyclerview_1);
-        mrecyclerview.setAdapter(madpter);
+     //   mrecyclerview.setAdapter(madpter);
 
     }
 
-    public void initdata()//拉取Developer的请求
+    public void initdata()//拉取Developer的请求，将数据传入view里
     {
         mdeveloperspresenter.onCreate();//创建呈现层
         mdeveloperspresenter.getDevelopers();//调用网络请求方法
         mdeveloperspresenter.attachView((View) mDevelopersview);
-        layoutManager=new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
-        madpter=new RecyclerViewAdpter(getData(developers));
+
     }
     private DevelopersView mDevelopersview=new DevelopersView() {//新建一个developersview层的数据去完成这些请求
         @Override
