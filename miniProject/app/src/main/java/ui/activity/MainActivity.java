@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         mdeveloperspresenter.getDevelopers();//调用网络请求方法
         mdeveloperspresenter.attachView((View) mDevelopersview);
         layoutManager=new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
-        madpter=new RecyclerViewAdpter(getData());
+        madpter=new RecyclerViewAdpter(getData(developers));
     }
     private DevelopersView mDevelopersview=new DevelopersView() {//新建一个developersview层的数据去完成这些请求
         @Override

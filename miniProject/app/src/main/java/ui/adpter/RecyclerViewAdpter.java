@@ -18,15 +18,14 @@ import service.entity.Developers;
 
 public class RecyclerViewAdpter extends RecyclerView.Adapter<RecyclerViewAdpter.Innerholder> {
     private Context context;
-    private final LayoutInflater layoutInflater;
-    private List<Developers> mDevelopers=new ArrayList<>();
-    public RecyclerViewAdpter(Context context) {
-        this.context = context;
-        layoutInflater=LayoutInflater.from(context);
+    private List<Developers> mDevelopers;
+    public RecyclerViewAdpter(List<Developers> developers) {
+        this.mDevelopers=developers;
     }
     @NonNull
     @Override
     public Innerholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
         return new Innerholder(layoutInflater.inflate(R.layout.item,parent,false));
     }
 
@@ -45,17 +44,15 @@ public class RecyclerViewAdpter extends RecyclerView.Adapter<RecyclerViewAdpter.
         private TextView item_2;
         public Innerholder(View inflate) {
             super(inflate);
-            simpleDraweeView=(SimpleDraweeView)inflate.findViewById(R.id.aver);
-            item_1=(TextView)inflate.findViewById(R.id.item_t1);
-            item_2=(TextView)inflate.findViewById(R.id.item_t2);
+            simpleDraweeView=inflate.findViewById(R.id.aver);
+            item_1=inflate.findViewById(R.id.item_t1);
+            item_2=inflate.findViewById(R.id.item_t2);
         }
         public void setdata(Developers developers)
         {
-        //    simpleDraweeView.setImageURI(developers.getAvatar());
-         //   item_1.setText(developers.getUsername());
-         //   item_2.setText(developers.getName());
-            item_1.setText("ABC");
-            item_2.setText("bcd");
+             simpleDraweeView.setImageURI(developers.getAvatar());
+            item_1.setText(developers.getUsername());
+            item_2.setText(developers.getName());
         }
     }
 }
