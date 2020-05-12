@@ -8,12 +8,12 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.internal.subscriptions.ArrayCompositeSubscription;
 import service.entity.Languages_Collection;
 import service.manager.DataManager;
-import ui.view.DataView;
+//import ui.view.DataView;
 
 public class Languages_CollectionPrensenter implements Presenter{
     private DataManager dataManager;
     private Context context;
-    private DataView dataView;
+//    private DataView dataView;
     private Languages_Collection languages_collection;
     private CompositeDisposable compositeDisposable;
     public Languages_CollectionPrensenter(Context context)
@@ -47,8 +47,10 @@ public class Languages_CollectionPrensenter implements Presenter{
 
     @Override
     public void attachView(View view) {
-        dataView=(DataView)dataView;
+   //     dataView=(DataView)dataView;
     }
+
+
 
     @Override
     public void attachIncomingIntent(Intent intent) {
