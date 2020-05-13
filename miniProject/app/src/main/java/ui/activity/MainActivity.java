@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
@@ -35,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView_1;
     private TextView textView_2;
     private SimpleDraweeView simpleDraweeView;
-
-    public MainActivity() {
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,30 +43,36 @@ public class MainActivity extends AppCompatActivity {
         initdata();
         initView();
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     private void initView() {//将数据放到ui上
         textView_1=(TextView)findViewById(R.id.item_t1);
         textView_2=(TextView)findViewById(R.id.item_t2);
         simpleDraweeView=findViewById(R.id.aver);
-        mrecyclerview=(RecyclerView)findViewById(R.id.recyclerview_1);
+    //    mrecyclerview=(RecyclerView)findViewById(R.id.recyclerview_1);
      //   mrecyclerview.setAdapter(madpter);
 
     }
 
     public void initdata()//拉取Developer的请求，将数据传入view里
     {
-        mdeveloperspresenter.onCreate();//创建呈现层
-        mdeveloperspresenter.getDevelopers();//调用网络请求方法
-        mdeveloperspresenter.attachView((View) mDevelopersview);
+    //    mdeveloperspresenter.onCreate();//创建呈现层
+    //    mdeveloperspresenter.getDevelopers();//调用网络请求方法
+    //    mdeveloperspresenter.attachView((View) mDevelopersview);
 
     }
     private DevelopersView mDevelopersview=new DevelopersView() {//新建一个developersview层的数据去完成这些请求
         @Override
         public void success(Developers mdevelopers) {
             //请求成功，利用请求过来的数据mdevelopers去设置数据 textview1是作者名字 2是项目名字 sim是头像
-             textView_1.setText(mdevelopers.getUsername());
-             textView_2.setText(mdevelopers.getName());
-             simpleDraweeView.setImageURI(mdevelopers.getUrl());
+    //         textView_1.setText(mdevelopers.getUsername());
+     //        textView_2.setText(mdevelopers.getName());
+     //        simpleDraweeView.setImageURI(mdevelopers.getUrl());
         }
 
         @Override
@@ -78,7 +81,4 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private Context getData() {
-        return this;
-    }
 }
