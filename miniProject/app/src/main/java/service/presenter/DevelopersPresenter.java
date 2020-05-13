@@ -28,7 +28,7 @@ public class DevelopersPresenter implements Presenter{
 
     @Override
     public void onCreate() {
-        dataManager=new DataManager(context);
+        dataManager=new DataManager(context);//这个有问题，估计是context的问题
         compositeDisposable=new CompositeDisposable();
     }
 
