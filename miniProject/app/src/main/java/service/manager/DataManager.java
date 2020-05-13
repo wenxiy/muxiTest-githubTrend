@@ -14,7 +14,11 @@ public class DataManager {
     private RetrofitService mRetrofitService;
     public DataManager(Context context)
     {
-        this.mRetrofitService= RetrofitHelper.getInstance(context).getServer();
+        /*
+        下面👇一行报错，我怀疑是context的问题，没有吧context传入我的mainactivity里，单例模式的问题
+         */
+        this.mRetrofitService= RetrofitHelper.getInstance().getServer();
+
     }
     public Observable<Repositories> getRepositories(){
         return mRetrofitService.getRepositories();

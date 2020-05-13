@@ -64,7 +64,7 @@ public class DevelopersPresenter implements Presenter{
     }
 
     public void getDevelopers() {
-        RetrofitHelper.getInstance(context)
+        RetrofitHelper.getInstance()
                 .getServer()
                 .getDevelopers()
                 .subscribeOn(Schedulers.io())
