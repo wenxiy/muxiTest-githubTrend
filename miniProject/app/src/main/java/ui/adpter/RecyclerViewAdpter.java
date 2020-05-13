@@ -17,22 +17,27 @@ import java.util.List;
 import service.entity.Developers;
 
 public class RecyclerViewAdpter extends RecyclerView.Adapter<RecyclerViewAdpter.Innerholder> {
-    private Context context;
     private List<Developers> mDevelopers;
     public RecyclerViewAdpter(List<Developers> developers) {
         this.mDevelopers=developers;
     }
     @NonNull
+    //创建条目的view方法
     @Override
     public Innerholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //拿到view
+        // 创建InnerHolder
         LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
         return new Innerholder(layoutInflater.inflate(R.layout.item,parent,false));
     }
 
     @Override
+    //设置数据
     public void onBindViewHolder(@NonNull Innerholder holder, int position) {
+
         if(mDevelopers!=null) holder.setdata(mDevelopers.get(position));
     }
+    // 返回条目个数
     @Override
     public int getItemCount() {
         if(mDevelopers!=null) return mDevelopers.size();
@@ -43,14 +48,20 @@ public class RecyclerViewAdpter extends RecyclerView.Adapter<RecyclerViewAdpter.
         private TextView item_1;
         private TextView item_2;
         public Innerholder(View inflate) {
+            /*
+            找到条目的控件
+             */
             super(inflate);
             simpleDraweeView=inflate.findViewById(R.id.aver);
             item_1=inflate.findViewById(R.id.item_t1);
             item_2=inflate.findViewById(R.id.item_t2);
         }
+        /*
+            拿到数据
+         */
         public void setdata(Developers developers)
         {
-             simpleDraweeView.setImageURI(developers.getAvatar());
+            simpleDraweeView.setImageURI(developers.getAvatar());
             item_1.setText(developers.getUsername());
             item_2.setText(developers.getName());
         }

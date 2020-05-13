@@ -27,12 +27,11 @@ import ui.view.DevelopersView;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mrecyclerview;
-    private ArrayList<Developers> developers;
-   // private RecyclerViewAdpter madpter=new RecyclerViewAdpter(List<developers>);
     private DevelopersPresenter mdeveloperspresenter=new DevelopersPresenter(this);
-    private ArrayList<Languages_Collection> mlanguages_collections;
-    private ArrayList<Repositories> mrepositories;
-    private ArrayList<Spoken_Languages_Collection> mspoken_languages_collections;
+    private List<Languages_Collection> languages_collectiondatas;
+    private List<Developers> developerdatas;
+    private List<Repositories> repositorydata;
+    private List<Spoken_Languages_Collection> spoken_languages_collectiondatas;
     private TextView textView_1;
     private TextView textView_2;
     private SimpleDraweeView simpleDraweeView;
@@ -40,8 +39,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initdata();
-        initView();
+        textView_1=(TextView)findViewById(R.id.item_t1);
+        textView_2=(TextView)findViewById(R.id.item_t2);
+        simpleDraweeView=findViewById(R.id.aver);
+        mrecyclerview=(RecyclerView) findViewById(R.id.recyclerview_1);
+        initdeveloperdatas();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -50,21 +52,25 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void initView() {//将数据放到ui上
-        textView_1=(TextView)findViewById(R.id.item_t1);
-        textView_2=(TextView)findViewById(R.id.item_t2);
-        simpleDraweeView=findViewById(R.id.aver);
-    //    mrecyclerview=(RecyclerView)findViewById(R.id.recyclerview_1);
+//    private void initView() {//将数据放到ui上
      //   mrecyclerview.setAdapter(madpter);
+ //   }
 
-    }
-
-    public void initdata()//拉取Developer的请求，将数据传入view里
+    public void initdeveloperdatas()//拉取Developer的请求，将数据传入view里
     {
-    //    mdeveloperspresenter.onCreate();//创建呈现层
-    //    mdeveloperspresenter.getDevelopers();//调用网络请求方法
-    //    mdeveloperspresenter.attachView((View) mDevelopersview);
 
+        //创建呈现层的对象，调用网络请求方法，与view联系
+        mdeveloperspresenter.onCreate();//创建呈现层
+        mdeveloperspresenter.getDevelopers();//调用网络请求方法
+        mdeveloperspresenter.attachView((View) mDevelopersview);
+        developerdatas=new ArrayList<>();//创建
+        //设置布局管理器
+        LinearLayoutManager linearLayoutManager =new LinearLayoutManager(this);
+        mrecyclerview.setLayoutManager(linearLayoutManager);
+        //创建适配器
+        RecyclerViewAdpter adpter=new RecyclerViewAdpter(developerdatas);
+        //设置到Recyclerview
+        mrecyclerview.setAdapter(adpter);
     }
     private DevelopersView mDevelopersview=new DevelopersView() {//新建一个developersview层的数据去完成这些请求
         @Override
@@ -73,7 +79,12 @@ public class MainActivity extends AppCompatActivity {
     //         textView_1.setText(mdevelopers.getUsername());
      //        textView_2.setText(mdevelopers.getName());
      //        simpleDraweeView.setImageURI(mdevelopers.getUrl());
+            for(int i=0;i<10;i++)
+            {
+                developerdatas.add(mdevelopers);
+            }
         }
+
 
         @Override
         public void error(String result) {
