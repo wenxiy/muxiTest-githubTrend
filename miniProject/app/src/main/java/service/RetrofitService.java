@@ -10,9 +10,9 @@ import service.entity.Repositories;
 import service.entity.Spoken_Languages_Collection;
 
 public interface RetrofitService {
-    @GET("/repositories?language=&since=daily&spoken_language_code=")//repositories请求
+    @GET("/repositories")//repositories请求//注意这里
     Observable<Repositories> getRepositories();
-    @GET("/developers?language=&since=daily")//Developer请求
+    @GET("https://ghapi.huchen.dev/developers")//Developer请求
     Observable<Developers>getDevelopers();
     @GET("/languages")//Languages_Collection请求
     Observable<Languages_Collection>getLanguages();
